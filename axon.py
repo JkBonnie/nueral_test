@@ -5,6 +5,13 @@ class Axon:
         self.neuron = neuron
         self.endpoint_x = self.neuron.get_x() + math.cos(math.radians(direction)) * length
         self.endpoint_y = self.neuron.get_y() + math.sin(math.radians(direction)) * length
+        self.is_fireing = False
+
+    def get_endpoint(self):
+        return self.endpoint_x, self.endpoint_y
+    
+    def get_startpoint(self):
+        return self.neuron.get_x(), self.neuron.get_y()
         
     def find_in_range_dendrites(self, all_dendrites):
         fire_power = self.neuron.get_fire_power()
@@ -36,6 +43,10 @@ class Axon:
     def fire(self):
         for i in range(len(self.dendrites_in_range)):
             self.dendrites_in_range[i].add_charge(self.dendrites_in_range_fp[i])
+        self.is_fireing = True
+            
+    def unfire(self):
+        self.is_fireing = False
 
     def get_neuron(self):
         return self.neuron

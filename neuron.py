@@ -13,6 +13,7 @@ class Neuron():
         self.reset_randomness = reset_randomness
         self.charge_rate = charge_rate
         self.fire_power = fire_power
+        self.is_fireing = False
 
     def addAxon(self, axon):
         self.axons.append(axon)
@@ -24,6 +25,8 @@ class Neuron():
         return self.x
     def get_y(self):
         return self.y
+    def get_coords(self):
+        return self.x, self.y
     def get_fire_power(self):
         return self.fire_power
     
@@ -35,3 +38,7 @@ class Neuron():
             for axon in self.axons:
                 axon.fire()
             self.potential = self.potential_reset + random.uniform(-self.reset_randomness, self.reset_randomness)
+            self.is_fireing = True
+
+    def unfire(self):
+        self.is_fireing = False

@@ -26,6 +26,12 @@ class Dendrite():
     def get_x(self):
         return self.endpoint_x
     
+    def get_end_coords(self):
+        return self.endpoint_x, self.endpoint_y
+    
+    def get_start_coords(self):
+        return self.neuron.get_coords()
+    
     def get_y(self):
         return self.endpoint_y
     
